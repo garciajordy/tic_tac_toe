@@ -2,7 +2,7 @@
 
 In this project, we have built a simple tic_tac_toe game 
 
-## Enumerable Methods List:
+## 
 
 
 
