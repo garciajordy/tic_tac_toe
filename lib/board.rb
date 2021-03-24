@@ -1,19 +1,16 @@
-class Board
-    def initialize
-        @cells = [1..9]
-    end
+# frozen_string_literal: true
 
-    def display
-        print " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} \n",
-      "---+---+---\n",
-      " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} \n",
-      "---+---+---\n",
-      " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} \n"
-    end
+# Board class to create a board
+class Board < Game
+  def display
+    print " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} \n",
+          "---+---+---\n",
+          " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} \n",
+          "---+---+---\n",
+          " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} \n"
+  end
 
-    def update(num,mark)
-    @cells[num-1] = mark
-    end
-
+  def update(num, mark)
+    @cells[num - 1] = mark
+  end
 end
-
