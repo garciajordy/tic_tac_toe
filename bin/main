@@ -23,6 +23,8 @@ puts ' O | O | O '
 puts '---+---+---'
 puts '   | O | X '
 answer = ''
+cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+cells[3] = 'X'
 until answer == 'yes'
   puts "\nWould you like to play a game of Tic-Tac-Toe?\n"
   answer = gets.chomp.downcase
@@ -40,14 +42,24 @@ puts "\nEnter name"
 player2 = User.new(gets.chomp.capitalize)
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
 puts "\nYour name is #{player2.name} and your marker is #{player2.mark}"
+draw = false
+winning = false
 loop do
+  board = " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
   if turn
+    puts board # cells = [1,2,3,4,5,6,7,8,9]
     puts "\nIt is #{player1.name} turn"
-    gets.chomp
+    puts 'Enter a value between 1-9'
+    cells[gets.chomp.to_i - 1] = 'X'
+    p cells
+
     turn = false
   else
+    puts board
     puts "\nIt is #{player2.name} turn"
-    gets.chomp
+    puts 'Enter a value between 1-9'
+    cells[gets.chomp.to_i - 1] = 'O'
+    p cells
     turn = true
   end
 end
