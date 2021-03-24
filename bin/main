@@ -1,4 +1,22 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-puts 'Hello World!'
+class User
+  attr_reader :name
+
+  attr_writer :marker
+  def initialize(name)
+    @name = name
+    @marker = ''
+  end
+
+  def marker(marker)
+    @marker = marker
+  end
+end
+puts 'Enter name'
+player1 = User.new(gets.chomp)
+puts 'Choose marker'
+player1.marker(gets.chomp)
+
+puts " Your name is #{player1.name} and your marker is #{player1.marker}"
