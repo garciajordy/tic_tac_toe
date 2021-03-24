@@ -14,6 +14,8 @@ class User
     @marker
   end
 end
+turn = true
+
 puts "Welcome to Tic-Tac-Toe\n\n"
 puts ' X | X |   '
 puts '---+---+---'
@@ -38,3 +40,14 @@ puts "\nEnter name"
 player2 = User.new(gets.chomp.capitalize)
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
 puts "\nYour name is #{player2.name} and your marker is #{player2.mark}"
+loop do
+  if turn
+    puts "\nIt is #{player1.name} turn"
+    gets.chomp
+    turn = false
+  else
+    puts "\nIt is #{player2.name} turn"
+    gets.chomp
+    turn = true
+  end
+end
