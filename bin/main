@@ -42,41 +42,52 @@ puts "\nEnter name"
 player2 = User.new(gets.chomp.capitalize)
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
 puts "\nYour name is #{player2.name} and your marker is #{player2.mark}"
-draw = false
 winning = false
-puts " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
-loop do
-  
-  if turn
-   
+print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
+      "---+---+---\n",
+      " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
+      "---+---+---\n",
+      " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+
+until winning
+  if cells.all?(String)
+    puts "It's a draw!!!!"
+    break
+
+  elsif turn
     puts "\nIt is #{player1.name} turn"
     puts 'Enter a value between 1-9'
     inp = gets.chomp.to_i
-    
-    if inp.between?(1,9) && cells[inp-1].class != String
-      
+
+    if inp.between?(1, 9) && cells[inp - 1].class != String
       cells[inp - 1] = player1.mark
-      board = " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
-      puts board
-      
+      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
+            "---+---+---\n",
+            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
+            "---+---+---\n",
+            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
       turn = false
+
     else
-      puts "invalid input"
+      puts 'invalid input'
     end
   else
-    
     puts "\nIt is #{player2.name} turn"
     puts 'Enter a value between 1-9'
     inp = gets.chomp.to_i
-    if inp.between?(1,9) && cells[inp -1].class != String
-      
-      cells[inp  - 1] = player2.mark
-      board = " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
-      puts board 
+
+    if inp.between?(1, 9) && cells[inp - 1].class != String
+      cells[inp - 1] = player2.mark
+      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
+            "---+---+---\n",
+            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
+            "---+---+---\n",
+            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
       turn = true
+
     else
-      puts "invalid input"
+      puts 'invalid input'
     end
-    
+
   end
 end
