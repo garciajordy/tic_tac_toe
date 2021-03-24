@@ -7,16 +7,30 @@ class User
   attr_writer :marker
   def initialize(name)
     @name = name
-    @marker = ''
   end
 
-  def marker(marker)
-    @marker = marker
+  def marker=(mark)
+    @marker = mark
+  end
+
+  def mark
+  @marker
   end
 end
 puts 'Enter name'
-player1 = User.new(gets.chomp)
-puts 'Choose marker'
-player1.marker(gets.chomp)
+player1 = User.new(gets.chomp.capitalize)
 
-puts " Your name is #{player1.name} and your marker is #{player1.marker}"
+until player1.mark == "x" || player1.mark == "o" 
+  puts 'Choose between x and o'
+player1.marker=(gets.chomp.downcase)
+end
+
+puts " Your name is #{player1.name} and your marker is #{player1.mark}"
+puts 'Enter name'
+player2 = User.new(gets.chomp.capitalize)
+if player1.mark == "x"  
+player2.marker=("o")
+else
+  player2.marker=("x")
+end
+puts " Your name is #{player2.name} and your marker is #{player2.mark}"
