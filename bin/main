@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 # Class to make users
 class User
   attr_reader :name
 
   attr_writer :marker
+  
   def initialize(name)
     @name = name
   end
