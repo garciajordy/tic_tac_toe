@@ -10,6 +10,10 @@ class Board < Game
           " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} \n"
   end
 
+  def valid(num)
+   num.between?(1, 9) && @cells[num - 1].class != String
+  end
+
   def update(num, mark)
     @cells[num - 1] = mark
   end

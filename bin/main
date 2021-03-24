@@ -24,7 +24,7 @@ puts '---+---+---'
 puts '   | O | X '
 answer = ''
 cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+board = Board.new
 until answer == 'yes'
   puts "\nWould you like to play a game of Tic-Tac-Toe?\n"
   answer = gets.chomp.downcase
@@ -46,14 +46,16 @@ player2.marker = player1.mark == 'x' ? 'o' : 'x'
 puts "\nPlayerTwo\nYour name is #{player2.name}
 and your marker is #{player2.mark}"
 winning = false
-print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
-      "---+---+---\n",
-      " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
-      "---+---+---\n",
-      " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+board.display
 
 until winning
-  if cells.all?(String)
+  if board.valid && turn
+    puts "#{player1.name} has won the game!!!"
+   elsif board.valid
+      puts "#{player2.name} has won the game!!!"
+    
+
+ elsif board.full
     puts "It's a draw!!!!"
     break
 
@@ -62,13 +64,9 @@ until winning
     puts 'Enter a value between 1-9'
     inp = gets.chomp.to_i
 
-    if inp.between?(1, 9) && cells[inp - 1].class != String
-      cells[inp - 1] = player1.mark
-      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
-            "---+---+---\n",
-            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
-            "---+---+---\n",
-            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+    if board.valid(inp)
+      board.update(inp,player1.mark)
+      board.display
       turn = false
 
     else
@@ -79,13 +77,9 @@ until winning
     puts 'Enter a value between 1-9'
     inp = gets.chomp.to_i
 
-    if inp.between?(1, 9) && cells[inp - 1].class != String
-      cells[inp - 1] = player2.mark
-      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
-            "---+---+---\n",
-            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
-            "---+---+---\n",
-            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+    if board.valid(inp)
+      board.update(inp,player2.mark)
+      board.display
       turn = true
 
     else
