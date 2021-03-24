@@ -29,7 +29,8 @@ until answer == 'yes'
   puts "\nWould you like to play a game of Tic-Tac-Toe?\n"
   answer = gets.chomp.downcase
 end
-puts "\nEnter name"
+
+puts "\nPlayerOne\nEnter name:"
 player1 = User.new(gets.chomp.capitalize)
 
 until player1.mark == 'x' || player1.mark == 'o'
@@ -37,11 +38,13 @@ until player1.mark == 'x' || player1.mark == 'o'
   player1.marker = gets.chomp.downcase
 end
 
-puts "\nYour name is #{player1.name} and your marker is #{player1.mark}"
-puts "\nEnter name"
+puts "\nPlayerOne\nYour name is #{player1.name}
+and your marker is #{player1.mark}"
+puts "\nPlayerTwo\nEnter name"
 player2 = User.new(gets.chomp.capitalize)
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
-puts "\nYour name is #{player2.name} and your marker is #{player2.mark}"
+puts "\nPlayerTwo\nYour name is #{player2.name}
+and your marker is #{player2.mark}"
 winning = false
 print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
       "---+---+---\n",
