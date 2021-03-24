@@ -24,7 +24,7 @@ puts '---+---+---'
 puts '   | O | X '
 answer = ''
 cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-cells[3] = 'X'
+
 until answer == 'yes'
   puts "\nWould you like to play a game of Tic-Tac-Toe?\n"
   answer = gets.chomp.downcase
@@ -44,22 +44,39 @@ player2.marker = player1.mark == 'x' ? 'o' : 'x'
 puts "\nYour name is #{player2.name} and your marker is #{player2.mark}"
 draw = false
 winning = false
+puts " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
 loop do
-  board = " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
+  
   if turn
-    puts board # cells = [1,2,3,4,5,6,7,8,9]
+   
     puts "\nIt is #{player1.name} turn"
     puts 'Enter a value between 1-9'
-    cells[gets.chomp.to_i - 1] = 'X'
-    p cells
-
-    turn = false
+    inp = gets.chomp.to_i
+    
+    if inp.between?(1,9) && cells[inp-1].class != String
+      
+      cells[inp - 1] = player1.mark
+      board = " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
+      puts board
+      
+      turn = false
+    else
+      puts "invalid input"
+    end
   else
-    puts board
+    
     puts "\nIt is #{player2.name} turn"
     puts 'Enter a value between 1-9'
-    cells[gets.chomp.to_i - 1] = 'O'
-    p cells
-    turn = true
+    inp = gets.chomp.to_i
+    if inp.between?(1,9) && cells[inp -1].class != String
+      
+      cells[inp  - 1] = player2.mark
+      board = " #{cells[0]} | #{cells[1]} | #{cells[2]} \n---+---+---\n #{cells[3]} | #{cells[4]} | #{cells[5]} \n---+---+---\n #{cells[6]} | #{cells[7]} | #{cells[8]} "
+      puts board 
+      turn = true
+    else
+      puts "invalid input"
+    end
+    
   end
 end
