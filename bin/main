@@ -9,28 +9,26 @@ class User
     @name = name
   end
 
-  def marker=(mark)
-    @marker = mark
-  end
+  attr_writer :marker
 
   def mark
-  @marker
+    @marker
   end
 end
 puts 'Enter name'
 player1 = User.new(gets.chomp.capitalize)
 
-until player1.mark == "x" || player1.mark == "o" 
+until player1.mark == 'x' || player1.mark == 'o'
   puts 'Choose between x and o'
-player1.marker=(gets.chomp.downcase)
+  player1.marker = gets.chomp.downcase
 end
 
 puts " Your name is #{player1.name} and your marker is #{player1.mark}"
 puts 'Enter name'
 player2 = User.new(gets.chomp.capitalize)
-if player1.mark == "x"  
-player2.marker=("o")
-else
-  player2.marker=("x")
-end
+player2.marker = if player1.mark == 'x'
+                   'o'
+                 else
+                   'x'
+                 end
 puts " Your name is #{player2.name} and your marker is #{player2.mark}"
