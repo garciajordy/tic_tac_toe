@@ -19,6 +19,20 @@ $ cd <folder>
 $ git clone https://github.com/JulianaOsemeke/tic_tac_toe
 ```
 
+## To Play The Game
+
+```
+$ cd tic_tac_toe
+```
+
+```
+$ cd bin
+```
+
+```
+$ ruby main
+```
+
 ## Instructions
 
 ```
