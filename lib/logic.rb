@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Game Logic Class
 class Game
   POSSIBLE_WINS = [[0, 1, 2],

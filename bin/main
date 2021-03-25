@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/board.rb'
-require_relative '../lib/logic.rb'
+require_relative '../lib/board'
+require_relative '../lib/logic'
 
 # Class to make users
 class User
