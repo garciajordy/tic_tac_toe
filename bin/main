@@ -19,9 +19,9 @@ until answer == 'y'
 
   answer = gets.chomp.downcase
 end
-player2name = ""
-player1name = ""
-until player1name.length > 0
+player2name = ''
+player1name = ''
+until !player1name.empty?
   puts "\nPlayerOne\nEnter name:"
   player1 = User.new(gets.chomp.capitalize)
   player1name = player1.name
@@ -38,7 +38,7 @@ else
   puts "\nPlayerOne\nYour name is #{player1.name}
 and your marker is #{player1.mark}"
 end
-until player2name.length > 0
+until !player2name.empty?
   puts "\nPlayerTwo\nEnter name:"
   player2 = User.new(gets.chomp.capitalize)
   player2name = player2.name
