@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/board.rb'
+require_relative '../lib/logic.rb'
 
 # Class to make users
 class User
   attr_reader :name
 
   attr_writer :marker
-  
+
   def initialize(name)
     @name = name
   end
@@ -23,7 +27,6 @@ puts ' O | O | O '
 puts '---+---+---'
 puts '   | O | X '
 answer = ''
-cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 board = Board.new
 until answer == 'yes'
   puts "\nWould you like to play a game of Tic-Tac-Toe?\n"
@@ -49,13 +52,13 @@ winning = false
 board.display
 
 until winning
-  if board.valid && turn
+  if board.verify && turn
+    puts "#{player2.name} has won the game!!!"
+    break
+  elsif board.verify
     puts "#{player1.name} has won the game!!!"
-   elsif board.valid
-      puts "#{player2.name} has won the game!!!"
-    
-
- elsif board.full
+    break
+  elsif board.full
     puts "It's a draw!!!!"
     break
 
@@ -65,7 +68,7 @@ until winning
     inp = gets.chomp.to_i
 
     if board.valid(inp)
-      board.update(inp,player1.mark)
+      board.update(inp, player1.mark)
       board.display
       turn = false
 
@@ -78,7 +81,7 @@ until winning
     inp = gets.chomp.to_i
 
     if board.valid(inp)
-      board.update(inp,player2.mark)
+      board.update(inp, player2.mark)
       board.display
       turn = true
 
