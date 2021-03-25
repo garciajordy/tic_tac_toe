@@ -34,7 +34,7 @@ puts "\nPlayerOne\nEnter name:"
 player1 = User.new(gets.chomp.capitalize)
 
 until player1.mark == 'x' || player1.mark == 'o'
-  puts "\nChoose between x and o"
+  puts "\nChoose between X and O"
   player1.marker = gets.chomp.downcase
 end
 
