@@ -8,14 +8,6 @@ class Game
     @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
-  def win
-    puts 'GREAT JOB!!! YOU HAVE WON.'
-  end
-
-  # 1 | 2 | 3
-  # 4 | 5 | 6
-  # 7 | 8 | 9
-
   def verify
     @@possible_wins.any? do |arr|
       ((@cells[arr[0]] == @cells[arr[1]]) && (@cells[arr[0]] == @cells[arr[2]]))

@@ -11,6 +11,7 @@ class User
   attr_writer :marker
 
   def initialize(name)
+    name += "\'s" if name[-1] != 's'
     @name = name
   end
 
@@ -40,18 +41,26 @@ until player1.mark == 'x' || player1.mark == 'o'
   puts "\nChoose between x and o"
   player1.marker = gets.chomp.downcase
 end
-
-puts "\nPlayerOne\nYour name is #{player1.name}
+if player1.name[-2] == "\'"
+  puts "\nPlayerOne\nYour name is #{player1.name[0..-3]}
 and your marker is #{player1.mark}"
+else
+  puts "\nPlayerOne\nYour name is #{player1.name}
+and your marker is #{player1.mark}"
+end
 puts "\nPlayerTwo\nEnter name"
 player2 = User.new(gets.chomp.capitalize)
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
-puts "\nPlayerTwo\nYour name is #{player2.name}
-and your marker is #{player2.mark}"
-winning = false
+if player2.name[-2] == "\'"
+  puts "\nPlayerOne\nYour name is #{player2.name[0..-3]}
+  and your marker is #{player2.mark}"
+else
+  puts "\nPlayerOne\nYour name is #{player2.name}
+  and your marker is #{player2.mark}"
+  end
 board.display
 
-until winning
+loop do
   if board.verify && turn
     puts "#{player2.name} has won the game!!!"
     break
