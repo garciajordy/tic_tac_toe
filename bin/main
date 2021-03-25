@@ -1,22 +1,96 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
+# Class to make users
 class User
   attr_reader :name
 
   attr_writer :marker
+
   def initialize(name)
     @name = name
-    @marker = ''
   end
 
-  def marker(marker)
-    @marker = marker
+  def mark
+    @marker
   end
 end
-puts 'Enter name'
-player1 = User.new(gets.chomp)
-puts 'Choose marker'
-player1.marker(gets.chomp)
+turn = true
 
-puts " Your name is #{player1.name} and your marker is #{player1.marker}"
+puts "Welcome to Tic-Tac-Toe\n\n"
+puts ' X | X |   '
+puts '---+---+---'
+puts ' O | O | O '
+puts '---+---+---'
+puts '   | O | X '
+answer = ''
+cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+until answer == 'y'
+  puts "\nWould you like to play a game of Tic-Tac-Toe? Write \"y\" to continue\n"
+  answer = gets.chomp.downcase
+end
+
+puts "\nPlayerOne\nEnter name:"
+player1 = User.new(gets.chomp.capitalize)
+
+until player1.mark == 'x' || player1.mark == 'o'
+  puts "\nChoose between X and O"
+  player1.marker = gets.chomp.downcase
+end
+
+puts "\nPlayerOne\nYour name is #{player1.name}
+and your marker is #{player1.mark}"
+puts "\nPlayerTwo\nEnter name"
+player2 = User.new(gets.chomp.capitalize)
+player2.marker = player1.mark == 'x' ? 'o' : 'x'
+puts "\nPlayerTwo\nYour name is #{player2.name}
+and your marker is #{player2.mark}"
+winning = false
+print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
+      "---+---+---\n",
+      " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
+      "---+---+---\n",
+      " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+
+until winning
+  if cells.all?(String)
+    puts "It's a draw!!!!"
+    break
+
+  elsif turn
+    puts "\nIt is #{player1.name} turn"
+    puts 'Enter a value between 1-9.'
+    inp = gets.chomp.to_i
+
+    if inp.between?(1, 9) && cells[inp - 1].class != String
+      cells[inp - 1] = player1.mark
+      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
+            "---+---+---\n",
+            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
+            "---+---+---\n",
+            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+      turn = false
+
+    else
+      puts 'invalid input'
+    end
+  else
+    puts "\nIt is #{player2.name} turn"
+    puts 'Enter a value between 1-9'
+    inp = gets.chomp.to_i
+
+    if inp.between?(1, 9) && cells[inp - 1].class != String
+      cells[inp - 1] = player2.mark
+      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
+            "---+---+---\n",
+            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
+            "---+---+---\n",
+            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+      turn = true
+
+    else
+      puts 'invalid input'
+    end
+
+  end
+end
