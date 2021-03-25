@@ -57,10 +57,10 @@ if player2.name[-2] == "\'"
 else
   puts "\nPlayerOne\nYour name is #{player2.name}
   and your marker is #{player2.mark}"
-  end
+end
 board.display
-
-loop do
+winning = false
+until winning
   if board.verify && turn
     puts "#{player2.name} has won the game!!!"
     break
