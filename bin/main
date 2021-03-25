@@ -58,7 +58,8 @@ else
   puts "\nPlayerOne\nYour name is #{player2.name}
   and your marker is #{player2.mark}"
 end
-board.display
+print " 1 | 2 | 3 \n---+---+---\n 4 | 5 | 6 \n---+---+---\n 7 | 8 | 9 \n"
+
 winning = false
 until winning
   if board.verify && turn
@@ -69,7 +70,6 @@ until winning
     break
   elsif board.full
     puts "It's a draw!!!!"
-    break
 
   elsif turn
     puts "\nIt is #{player1.name} turn"
@@ -78,7 +78,7 @@ until winning
 
     if board.valid(inp)
       board.update(inp, player1.mark)
-      board.display
+      puts board.display
       turn = false
 
     else
@@ -91,7 +91,7 @@ until winning
 
     if board.valid(inp)
       board.update(inp, player2.mark)
-      board.display
+      puts board.display
       turn = true
 
     else

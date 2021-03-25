@@ -4,11 +4,7 @@ require_relative 'logic'
 # Board class to create a board
 class Board < Game
   def display
-    print " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} \n",
-          "---+---+---\n",
-          " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} \n",
-          "---+---+---\n",
-          " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} \n"
+    @board_display
   end
 
   def valid(num)
@@ -17,5 +13,10 @@ class Board < Game
 
   def update(num, mark)
     @cells[num - 1] = mark
+    @board_display = " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} ",
+                     '---+---+---',
+                     " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} ",
+                     '---+---+---',
+                     " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
   end
 end
