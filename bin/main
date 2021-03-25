@@ -1,23 +1,10 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
+require_relative '../lib/user'
 require_relative '../lib/board'
 require_relative '../lib/logic'
 
-# Class to make users
-class User
-  attr_reader :name
-
-  attr_writer :marker
-
-  def initialize(name)
-    name += "\'s" if name[-1] != 's'
-    @name = name
-  end
-
-  def mark
-    @marker
-  end
-end
 turn = true
 
 puts "Welcome to Tic-Tac-Toe\n\n"
