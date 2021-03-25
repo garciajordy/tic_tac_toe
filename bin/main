@@ -22,7 +22,7 @@ until answer == 'y'
 end
 player2name = ''
 player1name = ''
-until !player1name.empty?
+while player1name.empty?
   puts "\nPlayerOne\nEnter name:"
   player1 = User.new(gets.chomp.capitalize)
   player1name = player1.name
@@ -39,7 +39,7 @@ else
   puts "\nPlayerOne\nYour name is #{player1.name}
 and your marker is #{player1.mark}"
 end
-until !player2name.empty?
+while player2name.empty?
   puts "\nPlayerTwo\nEnter name:"
   player2 = User.new(gets.chomp.capitalize)
   player2name = player2.name
