@@ -25,6 +25,12 @@ while player1name.empty?
   puts "\nPlayerOne\nEnter name:"
   player1 = User.new(gets.chomp.capitalize)
   player1name = player1.name
+  if !player1name.empty?
+    break
+  else
+    puts 'Name must be at least 1 character!'
+  end
+ 
 end
 
 until player1.mark == 'x' || player1.mark == 'o'
@@ -42,6 +48,12 @@ while player2name.empty?
   puts "\nPlayerTwo\nEnter name:"
   player2 = User.new(gets.chomp.capitalize)
   player2name = player2.name
+  if !player2name.empty?
+    break
+  else
+    puts 'Name must be at least 1 character!'
+  end
+ 
 end
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
 if player2.name[-2] == "\'"
