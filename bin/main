@@ -34,7 +34,11 @@ until answer == 'y'
 
   answer = gets.chomp.downcase
 end
-
+puts "\nGame Instructions"
+puts '-----------------'
+puts "\n1)The game is played on a grid that's 3 squares by 3 squares.\n"
+puts "\n2)Write a number between 1 and 9\n
+to select the row and column respectively that you want to play on.\n"
 puts "\nPlayerOne\nEnter name:"
 player1 = User.new(gets.chomp.capitalize)
 
