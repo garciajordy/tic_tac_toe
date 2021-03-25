@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require_relative '../lib/user'
 require_relative '../lib/board'
@@ -13,17 +14,14 @@ puts ' O | O | O '
 puts '---+---+---'
 puts '   | O | X '
 answer = ''
-
 board = Board.new
 until answer == 'y'
   puts "\nWould you like to play a game of Tic-Tac-Toe? Write \"y\" to continue\n"
 
   answer = gets.chomp.downcase
 end
-
 puts "\nPlayerOne\nEnter name:"
 player1 = User.new(gets.chomp.capitalize)
-
 until player1.mark == 'x' || player1.mark == 'o'
   puts "\nChoose between X and O"
   player1.marker = gets.chomp.downcase
@@ -49,6 +47,7 @@ print " 1 | 2 | 3 \n---+---+---\n 4 | 5 | 6 \n---+---+---\n 7 | 8 | 9 \n"
 
 winning = false
 until winning
+
   if board.verify && turn
     puts "#{player2.name} has won the game!!!"
     break
@@ -57,7 +56,7 @@ until winning
     break
   elsif board.full
     puts "It's a draw!!!!"
-
+    break
   elsif turn
     puts "\nIt is #{player1.name} turn"
     puts 'Enter a value between 1-9.'
