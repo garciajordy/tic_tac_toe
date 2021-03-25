@@ -19,8 +19,14 @@ until answer == 'y'
 
   answer = gets.chomp.downcase
 end
-puts "\nPlayerOne\nEnter name:"
-player1 = User.new(gets.chomp.capitalize)
+player2name = ""
+player1name = ""
+until player1name.length > 0
+  puts "\nPlayerOne\nEnter name:"
+  player1 = User.new(gets.chomp.capitalize)
+  player1name = player1.name
+end
+
 until player1.mark == 'x' || player1.mark == 'o'
   puts "\nChoose between X and O"
   player1.marker = gets.chomp.downcase
@@ -32,8 +38,11 @@ else
   puts "\nPlayerOne\nYour name is #{player1.name}
 and your marker is #{player1.mark}"
 end
-puts "\nPlayerTwo\nEnter name"
-player2 = User.new(gets.chomp.capitalize)
+until player2name.length > 0
+  puts "\nPlayerTwo\nEnter name:"
+  player2 = User.new(gets.chomp.capitalize)
+  player2name = player2.name
+end
 player2.marker = player1.mark == 'x' ? 'o' : 'x'
 if player2.name[-2] == "\'"
   puts "\nPlayerOne\nYour name is #{player2.name[0..-3]}
