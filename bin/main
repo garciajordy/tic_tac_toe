@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
-require_relative '../lib/board.rb'
-require_relative '../lib/logic.rb'
+require_relative '../lib/board'
+require_relative '../lib/logic'
 
 # Class to make users
 class User
@@ -28,9 +27,11 @@ puts ' O | O | O '
 puts '---+---+---'
 puts '   | O | X '
 answer = ''
+
 board = Board.new
-until answer == 'yes'
-  puts "\nWould you like to play a game of Tic-Tac-Toe?\n"
+until answer == 'y'
+  puts "\nWould you like to play a game of Tic-Tac-Toe? Write \"y\" to continue\n"
+
   answer = gets.chomp.downcase
 end
 
@@ -38,7 +39,7 @@ puts "\nPlayerOne\nEnter name:"
 player1 = User.new(gets.chomp.capitalize)
 
 until player1.mark == 'x' || player1.mark == 'o'
-  puts "\nChoose between x and o"
+  puts "\nChoose between X and O"
   player1.marker = gets.chomp.downcase
 end
 if player1.name[-2] == "\'"
@@ -73,7 +74,7 @@ until winning
 
   elsif turn
     puts "\nIt is #{player1.name} turn"
-    puts 'Enter a value between 1-9'
+    puts 'Enter a value between 1-9.'
     inp = gets.chomp.to_i
 
     if board.valid(inp)
