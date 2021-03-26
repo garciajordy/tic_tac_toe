@@ -1,6 +1,5 @@
 # Class to make users
 class User
-
   attr_reader :name
 
   attr_writer :marker
