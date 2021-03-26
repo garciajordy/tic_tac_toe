@@ -9,7 +9,7 @@ In this project, We have implemented our own version of the game Tic-Tac-Toe usi
 
 ## Getting Started
 
-To get a local copy of the repository please run the following commands on your terminal:
+To get a local copy of the repository please run the following commands on your terminal
 
 ```
 $ cd <folder>
