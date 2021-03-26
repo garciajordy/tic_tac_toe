@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 require_relative '../lib/user'
 require_relative '../lib/board'
@@ -29,7 +28,6 @@ puts "\n  2)Write a number between 1 and 9\n
 puts "\n  3)Once a player gets 3 marks in a row\n
   (up, down, across, or diagonally) is the winner.\n"
 puts "\n  4)If all 9 squares are full the game is over.\n"
-
 
 player2name = ''
 player1name = ''
