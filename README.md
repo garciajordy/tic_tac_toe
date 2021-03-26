@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-In this project, We have implemented our own version of the game Tic-Tac-Toe using ruby.
+In this project, We have implemented our own version of the game Tic-Tac-Toe using Ruby.
 
 ## Built With
 
@@ -36,7 +36,7 @@ $ ruby main
 ## Instructions
 
 ```
-1)The game is played on a grid that's 3 squares by 3 squares.
+1)The game is played on a grid that is 3 squares by 3 squares.
 ```
 
 ```
