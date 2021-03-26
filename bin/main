@@ -1,19 +1,9 @@
 #!/usr/bin/env ruby
 
-# Class to make users
-class User
-  attr_reader :name
+require_relative '../lib/user'
+require_relative '../lib/board'
+require_relative '../lib/logic'
 
-  attr_writer :marker
-
-  def initialize(name)
-    @name = name
-  end
-
-  def mark
-    @marker
-  end
-end
 turn = true
 
 puts "Welcome to Tic-Tac-Toe\n\n"
@@ -23,52 +13,76 @@ puts ' O | O | O '
 puts '---+---+---'
 puts '   | O | X '
 answer = ''
-cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+board = Board.new
 until answer == 'y'
-  puts "\nWould you like to play a game of Tic-Tac-Toe? Write \"y\" to continue\n"
+  puts "\nWould you like to play a game of Tic-Tac-Toe? Write \"y\" to continue"
+
   answer = gets.chomp.downcase
 end
+player2name = ''
+player1name = ''
+puts "\nPlayerOne\n"
+while player1name.empty?
+  puts 'Enter name:'
+  player1 = User.new(gets.chomp.capitalize)
+  player1name = player1.name
+  break unless player1name.empty?
 
-puts "\nPlayerOne\nEnter name:"
-player1 = User.new(gets.chomp.capitalize)
+  puts 'Name can\'t be blank!'
+
+end
 
 until player1.mark == 'x' || player1.mark == 'o'
   puts "\nChoose between X and O"
   player1.marker = gets.chomp.downcase
 end
-
-puts "\nPlayerOne\nYour name is #{player1.name}
+if player1.name[-2] == "\'"
+  puts "\nPlayerOne\nYour name is #{player1.name[0..-3]}
 and your marker is #{player1.mark}"
-puts "\nPlayerTwo\nEnter name"
-player2 = User.new(gets.chomp.capitalize)
-player2.marker = player1.mark == 'x' ? 'o' : 'x'
-puts "\nPlayerTwo\nYour name is #{player2.name}
-and your marker is #{player2.mark}"
-winning = false
-print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
-      "---+---+---\n",
-      " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
-      "---+---+---\n",
-      " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+else
+  puts "\nPlayerOne\nYour name is #{player1.name}
+and your marker is #{player1.mark}"
+end
+puts "\nPlayerTwo\n"
+while player2name.empty?
+  puts 'Enter name:'
+  player2 = User.new(gets.chomp.capitalize)
+  player2name = player2.name
+  break unless player2name.empty?
 
+  puts 'Name can\'t be blank!'
+
+end
+player2.marker = player1.mark == 'x' ? 'o' : 'x'
+if player2.name[-2] == "\'"
+  puts "\nPlayerOne\nYour name is #{player2.name[0..-3]}
+  and your marker is #{player2.mark}"
+else
+  puts "\nPlayerOne\nYour name is #{player2.name}
+  and your marker is #{player2.mark}"
+end
+print " 1 | 2 | 3 \n---+---+---\n 4 | 5 | 6 \n---+---+---\n 7 | 8 | 9 \n"
+
+winning = false
 until winning
-  if cells.all?(String)
+
+  if board.verify && turn
+    puts "#{player2.name} has won the game!!!"
+    break
+  elsif board.verify
+    puts "#{player1.name} has won the game!!!"
+    break
+  elsif board.full
     puts "It's a draw!!!!"
     break
-
   elsif turn
     puts "\nIt is #{player1.name} turn"
     puts 'Enter a value between 1-9.'
     inp = gets.chomp.to_i
 
-    if inp.between?(1, 9) && cells[inp - 1].class != String
-      cells[inp - 1] = player1.mark
-      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
-            "---+---+---\n",
-            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
-            "---+---+---\n",
-            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+    if board.valid(inp)
+      board.update(inp, player1.mark)
+      puts board.display
       turn = false
 
     else
@@ -79,13 +93,9 @@ until winning
     puts 'Enter a value between 1-9'
     inp = gets.chomp.to_i
 
-    if inp.between?(1, 9) && cells[inp - 1].class != String
-      cells[inp - 1] = player2.mark
-      print " #{cells[0]} | #{cells[1]} | #{cells[2]} \n",
-            "---+---+---\n",
-            " #{cells[3]} | #{cells[4]} | #{cells[5]} \n",
-            "---+---+---\n",
-            " #{cells[6]} | #{cells[7]} | #{cells[8]} \n"
+    if board.valid(inp)
+      board.update(inp, player2.mark)
+      puts board.display
       turn = true
 
     else
