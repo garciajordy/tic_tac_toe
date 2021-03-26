@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-In this project, We have implemented our own version of the game Tic-Tac-Toe using ruby.
+In this project, We have implemented our own version of the game Tic-Tac-Toe using Ruby.
 
 ## Built With
 
