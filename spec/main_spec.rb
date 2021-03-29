@@ -47,11 +47,19 @@ describe Board do
     end
   end
 
-  describe "#valid" do 
+  describe "#valid" do
     it "returns true if number is between 1-9" do
-    board = Board.new
-    expect(board.valid(5)).to eql(true)
+      board = Board.new
+      expect(board.valid(5)).to eql(true)
+    end
+    it "it returns false if the number is not between 1-9" do
+      board = Board.new
+      expect(board.valid(10)).to eql(false)
+    end
+    it "it returns false if the cell is already filled" do
+      board = Board.new
+      board.update(5, "X")
+      expect(board.valid(5)).to eql(false)
     end
   end
-
 end
