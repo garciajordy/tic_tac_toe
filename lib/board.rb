@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'logic'
 # Board class to create a board
 class Board < Game
@@ -16,6 +18,6 @@ class Board < Game
                      " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} ",
                      '---+---+---',
                      " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
-    return true if @cells[num-1] == mark
+    return true if @cells[num - 1] == mark
   end
 end
