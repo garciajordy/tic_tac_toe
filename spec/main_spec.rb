@@ -62,4 +62,13 @@ describe Board do
       expect(board.valid(5)).to eql(false)
     end
   end
+
+  describe "#update" do 
+    it "returns true if the cell update" do
+    board = Board.new
+    expect(board.update(5,"X")).to eql(true)
+    end
+  end
+
+
 end
