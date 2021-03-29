@@ -1,4 +1,5 @@
 require "./lib/board.rb"
+require "./lib/user.rb"
 
 describe Board do
   describe "#verify" do
@@ -63,12 +64,19 @@ describe Board do
     end
   end
 
-  describe "#update" do 
+  describe "#update" do
     it "returns true if the cell update" do
-    board = Board.new
-    expect(board.update(5,"X")).to eql(true)
+      board = Board.new
+      expect(board.update(5, "X")).to eql(true)
     end
   end
+end
 
-
+describe User do
+  describe "#initialize" do
+    it "it adds 's if the name doesn't end with s" do
+      user = User.new("John")
+      expect(user.name).to eql("John's")
+    end
+  end
 end
