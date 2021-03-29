@@ -46,4 +46,12 @@ describe Board do
       expect(board.full).to eql(false)
     end
   end
+
+  describe "#valid" do 
+    it "returns true if number is between 1-9" do
+    board = Board.new
+    expect(board.valid(5)).to eql(true)
+    end
+  end
+
 end
