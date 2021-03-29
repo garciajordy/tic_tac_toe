@@ -6,19 +6,25 @@ AllCops:
     - "Rakefile"
     - "node_modules/**/*"
 
+
   DisplayCopNames: true
 
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 20
+  Max: 70
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
   IgnoredMethods: ["describe"]
-  Max: 30
+  Max: 120
+ Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
+ - "spec/main.spec.rb"
 
 Style/Documentation:
   Enabled: false

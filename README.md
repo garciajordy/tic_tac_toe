@@ -19,6 +19,18 @@ $ cd <folder>
 $ git clone https://github.com/JulianaOsemeke/tic_tac_toe
 ```
 
+## To Use Rspec
+
+To use the Rspec please copy the repository and run the following commands on your terminal:
+
+```
+$ cd <folder>
+```
+
+```
+$ rspec
+```
+
 ## To Play The Game
 
 ```

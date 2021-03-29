@@ -16,5 +16,6 @@ class Board < Game
                      " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} ",
                      '---+---+---',
                      " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
+    return true if @cells[num - 1] == mark
   end
 end
