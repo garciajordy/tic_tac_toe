@@ -5,7 +5,7 @@ require './lib/user.rb'
 
 describe Board do
   describe '#verify' do
-    it 'it returns true if all the cells in the top horizontal line are all the same' do
+    it 'returns true if the cells in the top horizontal line are the same' do
       board = Board.new
       board.update(1, 'X')
       board.update(2, 'X')
@@ -13,7 +13,7 @@ describe Board do
       expect(board.verify).to eql(true)
     end
 
-    it 'it returns false if all the cells in the top horizontal line are not the same' do
+    it 'returns false if the cells in top horizontal line are not the same' do
       board = Board.new
       board.update(1, 'X')
       board.update(2, 'O')
