@@ -32,5 +32,18 @@ describe Board do
       board.update(9, "X")
       expect(board.full).to eql(true)
     end
+
+    it "it returns false if all cells are not filled" do
+      board = Board.new
+      board.update(1, "X")
+      board.update(2, "O")
+      board.update(3, "X")
+      board.update(5, "O")
+      board.update(6, "X")
+      board.update(7, "X")
+      board.update(8, "O")
+      board.update(9, "X")
+      expect(board.full).to eql(false)
+    end
   end
 end
