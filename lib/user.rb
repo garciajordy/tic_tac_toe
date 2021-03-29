@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Class to make users
 class User
   attr_reader :name
