@@ -6,6 +6,7 @@ AllCops:
     - "Rakefile"
     - "node_modules/**/*"
 
+
   DisplayCopNames: true
 
 Layout/LineLength:
@@ -19,6 +20,11 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   IgnoredMethods: ["describe"]
   Max: 120
+ Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
+ - "spec/main.spec.rb"
 
 Style/Documentation:
   Enabled: false

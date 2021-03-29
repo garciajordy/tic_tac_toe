@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 require './lib/board.rb'
 require './lib/user.rb'
 
@@ -86,3 +87,4 @@ describe User do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
